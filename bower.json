@@ -4,7 +4,7 @@
   "authors": [
     "Sami Suo-Heikki <samiheikki@vaadin.com>"
   ],
-  "description": "Scroll progress bar to top of the document.",
+  "description": "Scroll progress component with Polymer.",
   "keywords": [
     "web-component",
     "web-components",
@@ -13,7 +13,6 @@
     "scrolling"
   ],
   "main": "scroll-progress.html",
-  "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/samiheikki/scroll-progress/",
   "ignore": [
     "/.*",
