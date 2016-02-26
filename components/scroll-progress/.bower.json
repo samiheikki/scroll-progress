@@ -1,0 +1,39 @@
+{
+  "name": "scroll-progress",
+  "authors": [
+    "Sami Suo-Heikki <samiheikki@vaadin.com>"
+  ],
+  "description": "Scroll progress component with Polymer.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "scroll-progress",
+    "scrolling"
+  ],
+  "main": "scroll-progress.html",
+  "homepage": "https://github.com/samiheikki/scroll-progress/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/demo/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.2.3",
+    "paper-progress": "PolymerElements/paper-progress#^1.0.8"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  },
+  "_release": "a78f031994",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a78f031994e550498aa7b3564ecf579b36473f74"
+  },
+  "_source": "git://github.com/samiheikki/scroll-progress.git",
+  "_target": "master",
+  "_originalSource": "samiheikki/scroll-progress",
+  "_direct": true
+}
