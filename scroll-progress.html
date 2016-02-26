@@ -15,6 +15,7 @@ To change the scroll progress bar colors:
     scroll-progress {
       --scroll-progress-color: #e91e63;
       --scroll-background-color: #e0e0e0;
+      --scroll-progress-height: 4px;
     }
 
 @demo
@@ -24,7 +25,6 @@ To change the scroll progress bar colors:
   <style>
     :host {
       position: fixed;
-      top: 0;
       left: 0;
       z-index: 999;
       width: 100%;
@@ -34,12 +34,24 @@ To change the scroll progress bar colors:
       display: inline;
       --paper-progress-active-color: var(--scroll-progress-color);
       --paper-progress-container-color: var(--scroll-background-color);
+      --paper-progress-transition-duration: 0.2s;
+      --paper-progress-transition-timing-function: ease;
+      --paper-progress-transition-transition-delay: 0.5s;
+      --paper-progress-height: var(--scroll-progress-height);
+    }
+
+    :host.top {
+      top: 0;
+    }
+
+    :host.bottom {
+      bottom: 0;
     }
 
   </style>
 
   <template>
-    <paper-progress id="scroll"></paper-progress>
+    <paper-progress id="scroll" value=[[_scrollPercent]] class="transiting"></paper-progress>
   </template>
 
 </dom-module>
@@ -51,6 +63,16 @@ To change the scroll progress bar colors:
     is: 'scroll-progress',
 
     properties: {
+      /**
+       * Position of `<scroll-progress>`.
+       * Possible values: `top`, `bottom`.
+       */
+      position: {
+        type: String,
+        observer: '_positionChanged',
+        value: 'top'
+      },
+
       _scrollPercent: Number
     },
 
@@ -58,6 +80,7 @@ To change the scroll progress bar colors:
 
     ready: function() {
       this._boundUpdateScroll = this._updateScroll.bind(this);
+      this._positionChanged();
     },
 
     attached: function() {
@@ -73,13 +96,22 @@ To change the scroll progress bar colors:
 
     _updateScroll: function() {
       this._setScrollPercent();
-      this.$.scroll.value = this._scrollPercent;
     },
 
     _setScrollPercent: function() {
       var bodyHeight = document.querySelector('body').offsetHeight;
       var windowHeight = window.innerHeight;
       this._scrollPercent = (Math.max(0, Math.min(1, document.querySelector('body').scrollTop/(bodyHeight - windowHeight)))) * 100;
+    },
+
+    _positionChanged: function() {
+      if (this.position === 'bottom') {
+        this.classList.add('bottom');
+        this.classList.remove('top');
+      } else {
+        this.classList.add('top');
+        this.classList.remove('bottom');
+      }
     }
 
   });

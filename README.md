@@ -23,6 +23,7 @@ bower install scroll-progress --save
     scroll-progress {
       --scroll-progress-color: #e91e63;
       --scroll-background-color: #e0e0e0;
+      --scroll-progress-height: 4px;
     }
 </style>
 ```
