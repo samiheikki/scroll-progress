@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <!-- Step 1: import the element to test -->
+    <link rel="import" href="../scroll-progress.html">
+  </head>
+  <body>
+
+    <!-- You can use the document as a place to set up your fixtures. -->
+    <scroll-progress></scroll-progress>
+
+    <script>
+      var myEl = document.querySelector('scroll-progress');
+
+      suite('<scroll-progress>', function() {
+
+        test('should show over 50%', function(done) {
+          var body = myEl.parentElement;
+          body.style.height = (window.innerHeight * 2) + "px";
+          window.scrollTo(screen.width/2, screen.height/2 );
+          setTimeout(function(){
+            assert.isTrue(myEl._scrollPercent > 50);
+            done();
+          }, 1000);
+        });
+
+      });
+    </script>
+
+  </body>
+</html>

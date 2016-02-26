@@ -1,0 +1,31 @@
+{
+  "name": "scroll-progress",
+  "version": "1.0.0",
+  "authors": [
+    "Sami Suo-Heikki <samiheikki@vaadin.com>"
+  ],
+  "description": "Scroll progress bar to top of the document.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "scroll-progress",
+    "scrolling"
+  ],
+  "main": "scroll-progress.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/samiheikki/scroll-progress/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/demo/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.2.3",
+    "paper-progress": "PolymerElements/paper-progress#^1.0.8"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  }
+}

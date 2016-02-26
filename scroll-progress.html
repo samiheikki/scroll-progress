@@ -1,0 +1,87 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-progress/paper-progress.html" />
+
+<!--
+The Scroll Progress is an element providing a progress bar to top of the document to show to user how much content is still left.
+
+Example:
+
+    <scroll-progress></scroll-progress>
+
+### Styling the Scroll Progress:
+
+To change the scroll progress bar colors:
+
+    scroll-progress {
+      --scroll-progress-color: #e91e63;
+      --scroll-background-color: #e0e0e0;
+    }
+
+@demo
+-->
+<dom-module id="scroll-progress">
+
+  <style>
+    :host {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      width: 100%;
+    }
+
+    paper-progress {
+      display: inline;
+      --paper-progress-active-color: var(--scroll-progress-color);
+      --paper-progress-container-color: var(--scroll-background-color);
+    }
+
+  </style>
+
+  <template>
+    <paper-progress id="scroll"></paper-progress>
+  </template>
+
+</dom-module>
+
+<script>
+
+  Polymer({
+
+    is: 'scroll-progress',
+
+    properties: {
+      _scrollPercent: Number
+    },
+
+    // Element Lifecycle
+
+    ready: function() {
+      this._boundUpdateScroll = this._updateScroll.bind(this);
+    },
+
+    attached: function() {
+      window.addEventListener('scroll', this._boundUpdateScroll, true);
+      window.addEventListener('resize', this._boundUpdateScroll, true);
+      this._boundUpdateScroll();
+    },
+
+    detached: function() {
+      window.removeEventListener('scroll', this._boundUpdateScroll, true);
+      window.removeEventListener('resize', this._boundUpdateScroll, true);
+    },
+
+    _updateScroll: function() {
+      this._setScrollPercent();
+      this.$.scroll.value = this._scrollPercent;
+    },
+
+    _setScrollPercent: function() {
+      var bodyHeight = document.querySelector('body').offsetHeight;
+      var windowHeight = window.innerHeight;
+      this._scrollPercent = (Math.max(0, Math.min(1, document.querySelector('body').scrollTop/(bodyHeight - windowHeight)))) * 100;
+    }
+
+  });
+
+</script>
