@@ -5,7 +5,7 @@ scroll-progress
 
 The Scroll Progress is a Polymer-based element providing a progress bar to top of the document to show to user how much content is still left.
 
-See a [live demo](http://samiheikki.github.io/progress-scroll/).
+See a [live demo](https://scroll-progress.firebaseapp.com/).
 
 ## Getting Started
 
