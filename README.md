@@ -1,7 +1,7 @@
 scroll-progress
 ===============
 
-![Screenshot](demo.PNG)
+![Screenshot](https://github.com/samiheikki/scroll-progress/raw/master/demo.PNG)
 
 The Scroll Progress is a Polymer-based element providing a progress bar to top of the document to show to user how much content is still left.
 
